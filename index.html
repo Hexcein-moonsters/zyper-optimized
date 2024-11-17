@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="reveal.min.css">
   <link rel="icon" href="ZYPHER.png">
   <!--<link href="font.css" rel="stylesheet">-->
-  <script src="particles.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
   <meta property="og:title" content="ZYPHER Studios" />
   <meta property="og:type" content="website" />
@@ -196,7 +195,7 @@
   <script src="reveal.min.js"></script>
   <script>
     const widgetsSection = '/#/0/1';
-    if (window.location.href.includes(targetString)) { // User is looking at widgets, paint as fast as possible!
+    if (window.location.href.includes(widgetsSection)) { // User is looking at widgets, paint as fast as possible!
       // Instead of waiting for widgets.colbster.dev to respond with the script, define it in the index.html to prioritize rendering the widgets as fast as possible.
         async function refreshWidgets() {
     const widgets = document.querySelectorAll('user-widget');
@@ -314,10 +313,8 @@
             username.style.fontWeight = 'bold';
             username.style.lineHeight = '1';
             username.textContent = 'Unknown User';
-
             userBar.appendChild(avatar);
             userBar.appendChild(username);
-
             widget.appendChild(userBar);
         }
     });
@@ -350,6 +347,10 @@
       controlsBackArrows: 'visible',
     });
     document.addEventListener('DOMContentLoaded', function(){
+      var script = document.createElement("script");
+            script.src = "particles.min.js";
+            script.onload = function () {
+              
     particlesJS('particles-js', {
       particles: {
         number: {
@@ -429,6 +430,8 @@
       },
       retina_detect: true
     });
+    }
+    document.head.appendChild(script);
     });
 
     let isThrottled = false;
